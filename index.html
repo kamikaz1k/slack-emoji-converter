@@ -41,8 +41,10 @@
           </div>
         </div>
         <div class="col-md-8" ng-if="output">
-        <h4>Output string: (click to copy!)</h4>
-        <pre ng-click="copyToClipboard()">{{output}}</pre>
+          <h4>Output string: (click to copy!)</h4>
+          <pre ng-click="copyToClipboard()">{{output}}</pre>
+          <br />
+          <pre class="emoji-rendered-preview">{{renderedOutput}}</pre>
         </div>
 
     </div>
