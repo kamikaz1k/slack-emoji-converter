@@ -19,13 +19,19 @@ var convertToEmoji = function(str, light, dark){
 }
 
 var app = angular.module('emojiConverter', [])
+
 app.controller('MainCtrl', function($scope){
+  const search = new URLSearchParams(window.location.search)
+
+  $scope.inputStr =  search.get('input_string') || 'AnNoY'
   $scope.lightSquare = ':white_square:'
   $scope.darkSquare = ':black_square:'
+
   $scope.convert = function(){
     checkInput();
     $scope.output = convertToEmoji($scope.inputStr, $scope.lightSquare, $scope.darkSquare)
-    $scope.renderedOutput = output.replaceAll($scope.lightSquare, "⬜️").replaceAll($scope.darkSquare, ⬛️)
+    $scope.renderedOutput = $scope.output.replaceAll($scope.lightSquare, "⬜️").replaceAll($scope.darkSquare, "⬛️")
+
     if ($scope.output.length >  4000) $scope.error = 'You are over the Slack character limit! Try using a shorter emoji name or less characters'
   }
 

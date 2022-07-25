@@ -1,3 +1,14 @@
+### Local Development
+
+Run Locally using http server.
+
+Example for python:
+```python2
+python -c "import SimpleHTTPServer; m = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map; m[''] = 'text/plain'; m.update(dict([(k, v + ';charset=UTF-8') for k, v in m.items()])); SimpleHTTPServer.test();"
+```
+
+### What it do
+
 :white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square:  
 :white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::black_large_square::black_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::black_large_square::black_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square:  
 :white_large_square::black_large_square::black_large_square::white_large_square::white_large_square::black_large_square::white_large_square::black_large_square::white_large_square::white_large_square::black_large_square::white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square::black_large_square::white_large_square::white_large_square::black_large_square::white_large_square::white_large_square::black_large_square::white_large_square::black_large_square::white_large_square::white_large_square::white_large_square::black_large_square::white_large_square:  
