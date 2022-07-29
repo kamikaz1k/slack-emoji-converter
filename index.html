@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="style.css" />
     <script src="alphabet.js"></script>
     <script src="script.js"></script>
+    <style>
+      .emoji-rendered-preview {
+        white-space: pre;
+      }
+    </style>
   </head>
 
   <body ng-app="emojiConverter" ng-controller="MainCtrl">
@@ -33,7 +38,7 @@
           </div>
           <div class="form-group" class="control-label">
           <label for="mainStr">Input String</label>
-          <input ng-model="inputStr" id="mainStr" class="form-control">
+          <input ng-enter="convert()" ng-model="inputStr" id="mainStr" class="form-control">
           </div>
           <button ng-click="convert()" class="btn btn-success btn-lg">Convert!</button>
           <div>{{error}}</div>
