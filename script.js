@@ -15,31 +15,42 @@ function buildStringFrom(text){
 var convertToEmoji = function(str, light, dark){
   str = str.toLowerCase()
   str = buildStringFrom(str)
-  return str.replace(/0/g,light).replace(/1/g,dark)
+  return str.replace(/0/g, light).replace(/1/g, dark)
 }
 
 var app = angular.module('emojiConverter', [])
 
 app.controller('MainCtrl', function($scope){
+  const searchParamKey = 'q'
   const search = new URLSearchParams(window.location.search)
 
-  $scope.inputStr =  search.get('input_string') || 'AnNoY'
+  $scope.inputStr =  search.get(searchParamKey) || 'AnNoY'
   $scope.lightSquare = ':white_square:'
   $scope.darkSquare = ':black_square:'
 
   $scope.convert = function(){
-    checkInput();
+    if (!checkInput()) return;
     $scope.output = convertToEmoji($scope.inputStr, $scope.lightSquare, $scope.darkSquare)
     $scope.renderedOutput = $scope.output.replaceAll($scope.lightSquare, "⬜️").replaceAll($scope.darkSquare, "⬛️")
 
-    if ($scope.output.length >  4000) $scope.error = 'You are over the Slack character limit! Try using a shorter emoji name or less characters'
+    if ($scope.output.length >  4000) {
+      $scope.error = 'You are over the Slack character limit! Try using a shorter emoji name or less characters'
+    } else {
+      const newSearch = new URLSearchParams()
+      newSearch.set(searchParamKey, $scope.inputStr)
+      const newSearchString = newSearch.toString()
+      window.history.replaceState({}, window.document.title, window.location.pathname + newSearchString ? `?${newSearchString}` : '');
+    }
   }
 
-  var checkInput = function(){
+  function checkInput() {
     $scope.error = ''
-    if ($scope.inputStr && $scope.inputStr.match(/[.,-\/#!$%\^&\*;:{}=\-_`~()]|[0-9]/)){
-      $scope.error = "Sorry, punctuation and numbers are not yet supported"
+    if ($scope.inputStr && $scope.inputStr.match(/[.,-\/#!$%\^&\*;:{}=\-_`~()]/)){
+      $scope.error = "Sorry, punctuation is not yet supported"
+      return false
     }
+
+    return true
   }
   
   $scope.copyToClipboard = function(){
@@ -53,6 +64,9 @@ app.controller('MainCtrl', function($scope){
   };
 
   $scope.error = ''
+
+  // Bootstrap on load
+  $scope.convert()
 })
 
 app.directive('ngEnter', function() {
