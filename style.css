@@ -25,3 +25,8 @@ h4{
 .page-header{
   margin: 10px;
 }
+
+.emoji-rendered-preview {
+  white-space: pre;
+  line-height: 1;
+}
