@@ -15,7 +15,7 @@ function buildStringFrom(text){
 var convertToEmoji = function(str, light, dark){
   str = str.toLowerCase()
   str = buildStringFrom(str)
-  return str.replace(/0/g, light).replace(/1/g, dark)
+  return str.replaceAll(/0|1/g, function(match) { return match === '0' ? light : dark })
 }
 
 var app = angular.module('emojiConverter', [])
