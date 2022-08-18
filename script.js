@@ -28,6 +28,10 @@ app.controller('MainCtrl', function($scope){
   $scope.lightSquare = ':white_square:'
   $scope.darkSquare = ':black_square:'
 
+  $scope.swapEmojis = function() {
+    $scope.lightSquare = [$scope.darkSquare, $scope.darkSquare = $scope.lightSquare][0];
+  }
+
   $scope.convert = function(){
     if (!checkInput()) return;
     $scope.output = convertToEmoji($scope.inputStr, $scope.lightSquare, $scope.darkSquare)
